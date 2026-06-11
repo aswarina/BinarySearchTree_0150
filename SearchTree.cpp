@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,12 +21,12 @@ public:
 
 class BinaryTree
 {
-public:
+public: 
     Node *ROOT;
 
     BinaryTree()
     {
-        ROOT = NULL; // Initializing ROOT to null
+        ROOT = NULL; // Initializing ROOT to nul
     }
 
     // Insert a node in the binary search tree
@@ -48,7 +49,7 @@ public:
             return;
         }
 
-         if (element < parent->info)
+        if (element < parent->info)
         {
             parent->leftchild = newNode;
         }
@@ -58,31 +59,30 @@ public:
         }
     }
 
-
-// This function searches the current node of the specified node
-// as well as the current node of its parent
-void search(string element, Node *&parent, Node *&currentNode)
-{
-    currentNode = ROOT;
-    parent = NULL;
-
-    while ((currentNode != NULL) &&
-           (currentNode->info != element))
+    //this function searches the current node of the specified node
+    //as well as the current node of its parrent
+    void search(string element, Node *&parent, Node *&currentNode)
     {
-        parent = currentNode;
+        currentNode = ROOT;
+        parent = NULL;
 
-        if (element < currentNode->info)
-            currentNode = currentNode->leftchild;
-        else
-            currentNode = currentNode->rightchild;
+        while((currentNode != NULL) &&
+             (currentNode->info != element))
+             {
+                parent = currentNode;
+
+                if (element < currentNode->info)
+                    currentNode = currentNode->leftchild;
+                else
+                    currentNode = currentNode->rightchild;
+         }
     }
-}
 
-void inorder(Node *ptr)
-{
-    if (ROOT == NULL)
+    void inorder(Node *ptr)
     {
-        cout << "Tree is empty" << endl;
+        if (ROOT == NULL)
+        {
+            cout << "Tree is empty" << endl;
             return;
         }
 
@@ -94,20 +94,11 @@ void inorder(Node *ptr)
         }
     }
 
-     void preorder(Node *ptr)
+    void preorder(Node *ptr)
     {
         if (ROOT == NULL)
         {
-            cout <<"Tree is empty"
-        }
-    }
-}
-
-void preorder(Node *ptr)
-    {
-        if (ROOT == NULL)
-        {
-            cout << "Tree is empty" << endl;
+            cout <<"Tree is empty" <<  endl;
             return;
         }
 
@@ -121,7 +112,7 @@ void preorder(Node *ptr)
 
     void postorder(Node *ptr)
     {
-        // Performs the postorder traversal of the tree
+        // perfoms the postorder traveersal of the tree
 
         if (ROOT == NULL)
         {
@@ -145,11 +136,11 @@ int main()
     while (true)
     {
         cout << "\nMenu" << endl;
-        cout << "1. Implement insert operation" << endl;
-        cout << "2. Perform inorder traversal" << endl;
-        cout << "3. Perform preorder traversal" << endl;
-        cout << "4. Perform postorder traversal" << endl;
-        cout << "5. Exit" << endl;
+        cout << "1. implement insert operation" << endl;
+        cout << "2. perform inorder traversal" << endl;
+        cout << "3. perform preorder traversal" << endl;
+        cout << "4. perform postorder traversal" << endl;
+        cout << "5. exit" << endl;
         cout << "\nEnter your choice (1-5): ";
 
         char ch;
@@ -161,7 +152,7 @@ int main()
         {
         case '1':
         {
-             cout << "Enter a word: ";
+            cout << "Enter a word: ";
             string word;
             cin >> word;
             obj.insert(word);
@@ -173,5 +164,28 @@ int main()
             obj.inorder(obj.ROOT);
             break;
         }
-            
 
+        case '3':
+        {
+            obj.preorder(obj.ROOT);
+            break;
+        }
+        
+         case '4':
+        {
+            obj.postorder(obj.ROOT);
+            break;
+        }
+
+        case '5':
+            return 0;
+        
+        default:
+        {
+            cout << "Invalid option" << endl;
+            break;
+        }
+        }
+    }
+    return 0;
+}
